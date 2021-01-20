@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.laowengs.seckill.db.dao.ItemInventoryDao">
   <resultMap id="BaseResultMap" type="com.laowengs.seckill.db.po.ItemInventory">
-    <id column="item_id" jdbcType="LONG" property="itemId" />
-    <result column="item_num" jdbcType="LONG" property="item_num" />
+    <id column="item_id" jdbcType="BIGINT" property="itemId" />
+    <result column="item_num" jdbcType="BIGINT" property="itemId" />
   </resultMap>
   <sql id="Base_Column_List">
-    item_id, svn_file
+    item_id, item_num
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
