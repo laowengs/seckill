@@ -1,0 +1,8 @@
+
+dependencies {
+    compile(project(":seckill-core"))
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-tomcat'
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+//    compile 'org.springframework.cloud:spring-cloud-starter'
+}
