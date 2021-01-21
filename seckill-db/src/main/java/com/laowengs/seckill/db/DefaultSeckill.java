@@ -18,9 +18,13 @@ public class DefaultSeckill implements Seckill {
 
     @Override
     public void scramble(Long itemId) {
-        ItemInventory itemInventory = itemInventoryDao.selectByPrimaryKey(itemId);
+        ItemInventory itemInventory = getItemInventory(itemId);
         if(itemInventory != null){
             itemInventoryDao.updateItemNum(itemId,itemInventory.getItemNum()-1,itemInventory.getItemNum());
         }
+    }
+    @Override
+    public ItemInventory getItemInventory(Long itemId) {
+        return itemInventoryDao.selectByPrimaryKey(itemId);
     }
 }

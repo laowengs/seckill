@@ -8,4 +8,4 @@ logging:
     name: logs/${spring.application.name}.log
     path: logs
   level:
-    root: INFO
+    root: DEBUG

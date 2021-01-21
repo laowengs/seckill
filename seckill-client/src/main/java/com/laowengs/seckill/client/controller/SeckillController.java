@@ -1,7 +1,9 @@
 package com.laowengs.seckill.client.controller;
 
+import com.laowengs.seckill.core.Seckill;
 import com.laowengs.seckill.db.DefaultSeckill;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,17 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("seckill")
 public class SeckillController {
 
-    private DefaultSeckill seckill;
+    private Seckill seckill;
 
     @Autowired
-    public SeckillController(DefaultSeckill seckill) {
+    public SeckillController(Seckill seckill) {
         this.seckill = seckill;
     }
 
     @RequestMapping("buyItem")
-    public Object buyItem(BuyItemInfoInput buyItemInfoInput){
+    public Object buyItem(@RequestBody BuyItemInfoInput buyItemInfoInput){
         seckill.scramble(buyItemInfoInput.getItemId());
-        return "success";
+        return seckill.getItemInventory(buyItemInfoInput.getItemId());
     }
 }
 
