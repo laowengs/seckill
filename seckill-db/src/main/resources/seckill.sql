@@ -1,3 +1,7 @@
+CREATE DATABASE seckilldb;
+CREATE USER 'seckill'@'%' IDENTIFIED BY 'seckill.1qaz';
+
+
 
 CREATE TABLE `item_inventory` (
   `item_id` int(11) NOT NULL AUTO_INCREMENT,
