@@ -8,6 +8,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -20,6 +21,7 @@ import java.util.Properties;
 @Configurable
 @EnableTransactionManagement
 @MapperScan(basePackages = "com.laowengs.seckill.db.seckilldb.dao", sqlSessionTemplateRef  = "defaultSqlSessionTemplate")
+@ComponentScan("com.laowengs.seckill.db")
 public class SeckillDataSourceConfig {
 
     @Bean(name = "defaultDataSource")

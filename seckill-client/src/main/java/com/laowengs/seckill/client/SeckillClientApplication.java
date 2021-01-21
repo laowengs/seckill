@@ -1,12 +1,11 @@
 package com.laowengs.seckill.client;
 
-import com.laowengs.seckill.db.EnableSeckillFromDB;
+import com.laowengs.seckill.db.EnableSeckillDB;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@EnableSeckillFromDB
+@EnableSeckillDB
 public class SeckillClientApplication {
 
     public static void main(String[] args) {
