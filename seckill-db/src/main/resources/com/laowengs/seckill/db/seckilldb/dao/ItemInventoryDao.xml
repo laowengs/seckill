@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.laowengs.seckill.db.dao.ItemInventoryDao">
-  <resultMap id="BaseResultMap" type="com.laowengs.seckill.db.po.ItemInventory">
+<mapper namespace="com.laowengs.seckill.db.seckilldb.dao.ItemInventoryDao">
+  <resultMap id="BaseResultMap" type="com.laowengs.seckill.db.seckilldb.po.ItemInventory">
     <id column="item_id" jdbcType="BIGINT" property="itemId" />
     <result column="item_num" jdbcType="BIGINT" property="itemNum" />
   </resultMap>
@@ -13,5 +13,9 @@
     <include refid="Base_Column_List" />
     from item_inventory where item_id = #{itemId}
   </select>
+
+  <update id="updateItemNum">
+    update item_inventory set item_num = #{newItemNum} where item_id = #{itemId} and item_num = #{oldItemNum}
+  </update>
 
 </mapper>

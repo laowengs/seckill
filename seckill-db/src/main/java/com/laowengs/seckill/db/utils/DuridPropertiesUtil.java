@@ -1,4 +1,4 @@
-package com.laowengs.seckill.db;
+package com.laowengs.seckill.db.utils;
 
 
 import java.util.Properties;

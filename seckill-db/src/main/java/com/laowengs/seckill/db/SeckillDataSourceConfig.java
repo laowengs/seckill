@@ -19,9 +19,8 @@ import java.util.Properties;
 
 @Configurable
 @EnableTransactionManagement
-@MapperScan(basePackages = "com.laowengs.seckill.db.dao", sqlSessionTemplateRef  = "defaultSqlSessionTemplate")
-public class MybatisConfig {
-
+@MapperScan(basePackages = "com.laowengs.seckill.db.seckilldb.dao", sqlSessionTemplateRef  = "defaultSqlSessionTemplate")
+public class SeckillDataSourceConfig {
 
     @Bean(name = "defaultDataSource")
     @Primary

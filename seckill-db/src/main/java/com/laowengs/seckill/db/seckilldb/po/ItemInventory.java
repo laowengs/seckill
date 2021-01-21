@@ -1,4 +1,4 @@
-package com.laowengs.seckill.db.po;
+package com.laowengs.seckill.db.seckilldb.po;
 
 import java.io.Serializable;
 
@@ -7,25 +7,25 @@ import java.io.Serializable;
  * @author 
  */
 public class ItemInventory implements Serializable {
-    private Integer itemId;
+    private Long itemId;
 
-    private Integer itemNum;
+    private Long itemNum;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getItemId() {
+    public Long getItemId() {
         return itemId;
     }
 
-    public void setItemId(Integer itemId) {
+    public void setItemId(Long itemId) {
         this.itemId = itemId;
     }
 
-    public Integer getItemNum() {
+    public Long getItemNum() {
         return itemNum;
     }
 
-    public void setItemNum(Integer itemNum) {
+    public void setItemNum(Long itemNum) {
         this.itemNum = itemNum;
     }
 

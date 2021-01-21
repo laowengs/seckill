@@ -49,6 +49,8 @@ subprojects {
                 'org.junit.jupiter:junit-jupiter-engine'
 
         )
+        testImplementation('com.alibaba.testable:testable-all:0.4.9')
+        testAnnotationProcessor('com.alibaba.testable:testable-processor:0.4.9')
     }
     dependencyManagement {
         imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}") }

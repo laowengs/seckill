@@ -1,6 +1,7 @@
 
 dependencies {
     compile(project(":seckill-core"))
+    compile(project(":seckill-db"))
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-tomcat'
     compile 'org.springframework.boot:spring-boot-starter-actuator'
