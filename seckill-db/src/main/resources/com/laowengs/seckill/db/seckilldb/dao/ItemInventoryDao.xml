@@ -6,7 +6,7 @@
     <result column="item_num" jdbcType="BIGINT" property="itemNum" />
   </resultMap>
   <sql id="Base_Column_List">
-    item_id, item_num
+    item_id, item_num, create_date, status_date
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -17,5 +17,17 @@
   <update id="updateItemNum">
     update item_inventory set item_num = #{newItemNum} where item_id = #{itemId} and item_num = #{oldItemNum}
   </update>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from item_inventory
+  </select>
+
+  <select id="selectByDateRange" resultMap="BaseResultMap" parameterType="java.util.Date" >
+    select
+    <include refid="Base_Column_List" />
+    from item_inventory where #{beginDate} =< create_date and create_date < #{endDate}
+  </select>
 
 </mapper>

@@ -1,0 +1,5 @@
+dependencies {
+    compile(project(":seckill-core"))
+    compile(project(":seckill-db"))
+    compile 'redis.clients:jedis:3.5.1'
+}
