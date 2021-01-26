@@ -2,20 +2,10 @@
 dependencies {
     compile(project(":seckill-core"))
     compile(project(":seckill-db"))
-    compile ('org.springframework.boot:spring-boot-starter'){
-        exclude module:'spring-boot-starter-logging'
-    }
     compile ('org.springframework.boot:spring-boot-starter-web'){
         exclude module:'spring-boot-starter-logging'
-    }
-    compile ('org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'){
-        exclude module:'spring-boot-starter-logging'
-    }
-    compile ('org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:2.1.4'){
-        exclude module:'log4j-to-slf4j'
     }
     compile ('org.springframework.boot:spring-boot-starter-actuator'){
         exclude module:'spring-boot-starter-logging'
     }
-//    compile 'org.springframework.cloud:spring-cloud-starter'
 }
