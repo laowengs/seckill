@@ -27,7 +27,7 @@
   <select id="selectByDateRange" resultMap="BaseResultMap" parameterType="java.util.Date" >
     select
     <include refid="Base_Column_List" />
-    from item_inventory where #{beginDate} =< create_date and create_date < #{endDate} and statusCode = 0
+    from item_inventory where #{beginDate} <= create_date and create_date < #{endDate} and status_code = 0
   </select>
 
 </mapper>
