@@ -4,6 +4,9 @@
   <resultMap id="BaseResultMap" type="com.laowengs.seckill.db.seckilldb.po.ItemInventory">
     <id column="item_id" jdbcType="BIGINT" property="itemId" />
     <result column="item_num" jdbcType="BIGINT" property="itemNum" />
+    <result column="create_date" jdbcType="DATE" property="createDate" />
+    <result column="status_date" jdbcType="DATE" property="statusDate" />
+    <result column="status_code" jdbcType="BIGINT" property="statusCode" />
   </resultMap>
   <sql id="Base_Column_List">
     item_id, item_num, create_date, status_date, status_code
