@@ -13,3 +13,5 @@ CREATE TABLE `item_inventory` (
 
 
 INSERT INTO `item_inventory` (`item_id`, `item_num`,`create_date`,`status_date`) VALUES ('1', '999',NOW(),NOW());
+
+ALTER TABLE item_inventory ADD COLUMN status_code INT NOT NULL DEFAULT 0 COMMENT '商品状态 0 初始 1 已预热';

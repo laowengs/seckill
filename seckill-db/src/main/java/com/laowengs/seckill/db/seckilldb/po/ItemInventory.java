@@ -16,6 +16,8 @@ public class ItemInventory implements Serializable {
 
     private Date statusDate;
 
+    private Integer statusCode;
+
     public Long getItemId() {
         return itemId;
     }
@@ -48,6 +50,14 @@ public class ItemInventory implements Serializable {
         this.statusDate = statusDate;
     }
 
+    public Integer getStatusCode() {
+        return statusCode;
+    }
+
+    public void setStatusCode(Integer statusCode) {
+        this.statusCode = statusCode;
+    }
+
     @Override
     public String toString() {
         return "ItemInventory{" +
@@ -55,6 +65,7 @@ public class ItemInventory implements Serializable {
                 ", itemNum=" + itemNum +
                 ", createDate=" + createDate +
                 ", statusDate=" + statusDate +
+                ", statusCode=" + statusCode +
                 '}';
     }
 }

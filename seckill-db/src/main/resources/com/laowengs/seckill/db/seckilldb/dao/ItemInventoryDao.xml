@@ -6,7 +6,7 @@
     <result column="item_num" jdbcType="BIGINT" property="itemNum" />
   </resultMap>
   <sql id="Base_Column_List">
-    item_id, item_num, create_date, status_date
+    item_id, item_num, create_date, status_date, status_code
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -27,7 +27,7 @@
   <select id="selectByDateRange" resultMap="BaseResultMap" parameterType="java.util.Date" >
     select
     <include refid="Base_Column_List" />
-    from item_inventory where #{beginDate} =< create_date and create_date < #{endDate}
+    from item_inventory where #{beginDate} =< create_date and create_date < #{endDate} and statusCode = 0
   </select>
 
 </mapper>

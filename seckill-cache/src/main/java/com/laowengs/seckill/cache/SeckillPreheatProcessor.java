@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 
-import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -32,8 +31,7 @@ public class SeckillPreheatProcessor {
         this.redisManager = new RedisManager();
     }
 
-    private void preheat() {
-
+    public void timingPreheat() {
         long initialDelay = 0;
         long period = 10;
 
@@ -41,28 +39,32 @@ public class SeckillPreheatProcessor {
         //第一次执行 在initialDelay后
         //第二次执行 在initialDelay+1*period 后
         //第三次执行 在initialDelay+2*period 后
-        executorService.scheduleAtFixedRate(() -> {
+        executorService.scheduleAtFixedRate(this::preheat, initialDelay, period, TimeUnit.SECONDS);
 
-            //修改为查询指定时间的
-            Date beginDate = new Date();
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(beginDate);
-            calendar.add(Calendar.SECOND,300);
-            Date endDate = calendar.getTime();
+    }
 
-            List<ItemInventory> itemInventories = itemInventoryDao.selectByDateRange(beginDate,endDate);
-            if (itemInventories != null && !itemInventories.isEmpty()) {
-                for (ItemInventory itemInventory : itemInventories) {
-                    Jedis jedis = redisManager.getResource();
-                    String key = "seckill-" + itemInventory.getItemId();
-                    //怎么避免重复预热
-                    //1.定时任务，按商品id分发预热任务一次，不要重复执行
-                    for (long i = 0; i < itemInventory.getItemNum(); i++) {
-                        jedis.lpush(key,String.valueOf(itemInventory.getItemNum()));
-                    }
+    public void preheat() {
+        //修改为查询指定时间的
+        Date beginDate = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(beginDate);
+        calendar.add(Calendar.SECOND, 300);
+        Date endDate = calendar.getTime();
+
+        // 每次都获取300内需要抢购的商品信息
+        List<ItemInventory> itemInventories = itemInventoryDao.selectByDateRange(beginDate, endDate);
+        if (itemInventories != null && !itemInventories.isEmpty()) {
+            for (ItemInventory itemInventory : itemInventories) {
+                Jedis jedis = redisManager.getResource();
+                String key = "seckill-" + itemInventory.getItemId();
+                //怎么避免重复预热
+                //1.定时任务，按商品id分发预热任务一次，不要重复执行
+                String[] values = new String[itemInventory.getItemNum().intValue()];
+                for (int i = 0; i < itemInventory.getItemNum(); i++) {
+                    values[i] = String.valueOf(i);
                 }
+                jedis.sadd(key, values);
             }
-        }, initialDelay, period, TimeUnit.SECONDS);
-
+        }
     }
 }
