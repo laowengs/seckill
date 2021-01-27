@@ -12,5 +12,5 @@ public interface ItemInventoryDao {
 
     List<ItemInventory> selectAll();
 
-    List<ItemInventory> selectByDateRange(Date beginDate, Date endDate);
+    List<ItemInventory> selectByDateRange(Date endDate);
 }

@@ -52,7 +52,7 @@ public class SeckillPreheatProcessor {
         Date endDate = calendar.getTime();
 
         // 每次都获取300内需要抢购的商品信息
-        List<ItemInventory> itemInventories = itemInventoryDao.selectByDateRange(beginDate, endDate);
+        List<ItemInventory> itemInventories = itemInventoryDao.selectByDateRange(endDate);
         if (itemInventories != null && !itemInventories.isEmpty()) {
             for (ItemInventory itemInventory : itemInventories) {
                 Jedis jedis = redisManager.getResource();
@@ -61,8 +61,9 @@ public class SeckillPreheatProcessor {
                 //1.定时任务，按商品id分发预热任务一次，不要重复执行
                 String[] values = new String[itemInventory.getItemNum().intValue()];
                 for (int i = 0; i < itemInventory.getItemNum(); i++) {
-                    values[i] = String.valueOf(i);
+                    values[i] = String.valueOf(i+1);
                 }
+                logger.info("预热key:{},values {}",key,values);
                 jedis.sadd(key, values);
             }
         }
