@@ -5,10 +5,10 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 import java.io.InputStream;
 import java.util.Properties;
 
-@Configurable
+@Configuration
 @EnableTransactionManagement
 @MapperScan(basePackages = "com.laowengs.seckill.db.seckilldb.dao", sqlSessionTemplateRef  = "defaultSqlSessionTemplate")
 @ComponentScan("com.laowengs.seckill.db")
@@ -56,8 +56,7 @@ public class SeckillDataSourceConfig {
 
     @Bean
     public DataSourceTransactionManager dataSourceTransactionManager(@Qualifier("defaultDataSource") DataSource dataSource) {
-        DataSourceTransactionManager manager = new DataSourceTransactionManager();
-        manager.setDataSource(dataSource);
+        DataSourceTransactionManager manager = new DataSourceTransactionManager(dataSource);
         return manager;
     }
 

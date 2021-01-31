@@ -1,6 +1,9 @@
 package com.laowengs.seckill.db.seckilldb.dao;
 
+import com.laowengs.seckill.db.DefaultSeckill;
 import com.laowengs.seckill.db.SeckillDataSourceConfig;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
