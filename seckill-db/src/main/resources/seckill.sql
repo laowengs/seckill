@@ -1,4 +1,4 @@
-CREATE DATABASE seckilldb;
+CREATE DATABASE seckilldb default character set utf8mb4 collate utf8mb4_unicode_ci;;
 CREATE USER 'seckill'@'%' IDENTIFIED BY 'seckill.1qaz';
 
 
